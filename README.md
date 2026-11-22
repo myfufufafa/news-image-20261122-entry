@@ -65,11 +65,17 @@ mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
 
 ## Known render quirks (image, read line by line)
 
-- Story #10's subhead spells Antalya as "Antalty". One targeted fix
-  attempt left the typo in place and slightly degraded the map, so the
-  original render was kept. No headline itself is misspelled.
-- The map panel labels Bahrain, Kuwait, Kyiv, Antalya, Gopalpur and
-  Wellington; Riyadh has a pin in the Gulf cluster but no separate label.
+- Story #10's subhead first rendered Antalya as "Antalty"; fixed 22 Nov
+  with a precision PIL patch (OCR-located, paper-patched, re-rendered in a
+  matching serif). OCR now reads "Antalya" and no headline was touched.
+  A generative image-edit attempt before that left the typo in place and
+  slightly degraded the map, so it was discarded.
+- The map panel labels Bahrain, Kuwait, Kyiv, Riyadh, Antalya, Gopalpur
+  and Wellington. Riyadh's label was added 22 Nov with a PIL patch next
+  to the previously unlabeled Arabia pin; no pin or other label moved.
+  (Known map quirk from the generator: the Bahrain pin sits over Central
+  America rather than the Gulf. The pin was not moved — moving it would
+  mean redrawing the map.)
 
 ## Sources
 
